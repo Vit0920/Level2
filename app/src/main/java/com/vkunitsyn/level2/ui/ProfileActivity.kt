@@ -3,7 +3,7 @@ package com.vkunitsyn.level2.ui
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.level1.databinding.ActivityProfileBinding
+import com.vkunitsyn.level2.databinding.ActivityProfileBinding
 import com.vkunitsyn.level2.utils.Constants
 
 class ProfileActivity : AppCompatActivity() {

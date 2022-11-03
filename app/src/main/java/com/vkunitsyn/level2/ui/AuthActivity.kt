@@ -6,8 +6,8 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import androidx.appcompat.app.AppCompatActivity
-import com.example.level1.R
-import com.example.level1.databinding.ActivityAuthBinding
+import com.vkunitsyn.level2.R
+import com.vkunitsyn.level2.databinding.ActivityAuthBinding
 import com.vkunitsyn.level2.utils.Constants
 import com.vkunitsyn.level2.utils.Parser
 import com.vkunitsyn.level2.utils.Validator

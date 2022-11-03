@@ -12,5 +12,5 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "Level1"
+rootProject.name = "Level2"
 include ':app'

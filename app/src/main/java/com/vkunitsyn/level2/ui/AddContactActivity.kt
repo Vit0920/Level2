@@ -2,7 +2,7 @@ package com.vkunitsyn.level2.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.level1.databinding.ActivityAddContactBinding
+import com.vkunitsyn.level2.databinding.ActivityAddContactBinding
 
 class AddContactActivity : AppCompatActivity() {
 
