@@ -2,6 +2,7 @@ package com.vkunitsyn.level2.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.bumptech.glide.Glide
 import com.vkunitsyn.level2.databinding.ActivityAddContactBinding
 
 class AddContactActivity : AppCompatActivity() {
@@ -12,8 +13,9 @@ class AddContactActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAddContactBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         processBackArrowClick()
+        Glide.with(this)
+
     }
 
     private fun processBackArrowClick() {
