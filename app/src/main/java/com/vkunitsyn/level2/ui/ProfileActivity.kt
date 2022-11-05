@@ -16,17 +16,19 @@ class ProfileActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         //Animation
-        overridePendingTransition(com.google.android.material.R.anim.abc_grow_fade_in_from_bottom,
-            com.google.android.material.R.anim.abc_shrink_fade_out_from_bottom)
+        overridePendingTransition(
+            com.google.android.material.R.anim.abc_grow_fade_in_from_bottom,
+            com.google.android.material.R.anim.abc_shrink_fade_out_from_bottom
+        )
 
         //Displays user name
         binding.tvName.text = intent.extras?.getString(Constants.USER_NAME)
 
-        proccessViewContactasButtonClick()
+        processViewContactsButtonClick()
     }
 
-    private fun proccessViewContactasButtonClick() {
-        binding.mbViewContacts.setOnClickListener(){
+    private fun processViewContactsButtonClick() {
+        binding.mbViewContacts.setOnClickListener() {
             val intent = Intent(this@ProfileActivity, ContactsActivity::class.java)
             startActivity(intent)
         }

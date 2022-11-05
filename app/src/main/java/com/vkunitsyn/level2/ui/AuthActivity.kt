@@ -12,7 +12,7 @@ import com.vkunitsyn.level2.utils.Constants
 import com.vkunitsyn.level2.utils.Parser
 import com.vkunitsyn.level2.utils.Validator
 
-class AuthActivity : AppCompatActivity(){
+class AuthActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityAuthBinding
     private lateinit var prefs: SharedPreferences
@@ -42,7 +42,10 @@ class AuthActivity : AppCompatActivity(){
             if (noInputErrors()) {
                 processSharedPreferences()
                 val intent = Intent(this@AuthActivity, ProfileActivity::class.java)
-                intent.putExtra(Constants.USER_NAME, Parser.parseEmail(binding.tietEmail.text.toString()))
+                intent.putExtra(
+                    Constants.USER_NAME,
+                    Parser.parseEmail(binding.tietEmail.text.toString())
+                )
                 startActivity(intent)
             }
         }
@@ -89,10 +92,11 @@ class AuthActivity : AppCompatActivity(){
         binding.tietPassword.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
             }
+
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                 val password = p0.toString()
                 with(binding.tiloPassword) {
-                    when (Validator.validatePassword(password)){
+                    when (Validator.validatePassword(password)) {
                         Constants.STRONG_PASS -> {
                             helperText = getString(R.string.pass_helperText_stongPass)
                             error = ""
@@ -102,6 +106,7 @@ class AuthActivity : AppCompatActivity(){
                     }
                 }
             }
+
             override fun afterTextChanged(p0: Editable?) {
             }
         })

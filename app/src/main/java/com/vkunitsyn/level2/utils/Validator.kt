@@ -4,7 +4,7 @@ import java.util.regex.Pattern
 
 object Validator {
 
-    fun validatePassword (pass : String): Int {
+    fun validatePassword(pass: String): Int {
         return if (pass.length >= Constants.MIN_PASS_LENGTH) {
             val pattern = Pattern.compile("[^a-zA-Z0-9]")
             val matcher = pattern.matcher(pass)
