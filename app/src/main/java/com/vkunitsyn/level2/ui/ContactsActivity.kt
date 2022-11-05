@@ -43,7 +43,7 @@ class ContactsActivity : AppCompatActivity() {
     private fun processSearchClick() {
         binding.ibSearch.setOnClickListener {
             viewModel.changeData()
-            adapter.refreshList(viewModel.getData())
+            adapter.refresh(viewModel.getData())
         }
     }
 

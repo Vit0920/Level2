@@ -1,5 +1,6 @@
 package com.vkunitsyn.level2.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -35,11 +36,10 @@ class ContactsAdapter(contacts: List<ContactModel>) :
 
     override fun getItemCount(): Int = contactsList.size
 
-    fun refreshList(contacts: List<ContactModel>){
+    @SuppressLint("NotifyDataSetChanged")
+    fun refresh(contacts: List<ContactModel>){
         contactsList = contacts
         notifyDataSetChanged()
     }
-
-
 
 }
