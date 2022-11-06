@@ -1,19 +1,24 @@
 package com.vkunitsyn.level2.utils
 
-import android.service.autofill.UserData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.vkunitsyn.level2.model.ContactModel
 
-var contactsList: List<ContactModel> = mutableListOf()
+
 
 class ContactsViewModel : ViewModel() {
-    init {
-        contactsList = ContactsData.getData()
+
+    val contactsList: MutableLiveData<List<ContactModel>> by lazy {
+        MutableLiveData<List<ContactModel>>()
     }
 
-   fun getData() : List<ContactModel> = contactsList
+    init {
+        contactsList.value = ContactsData.getData()
+    }
+
+   fun getData()  = contactsList.value
 
     fun changeData() {
-        contactsList = ContactsData.getAnotherData()
+        contactsList.value = ContactsData.getAnotherData()
     }
 }

@@ -1,6 +1,5 @@
 package com.vkunitsyn.level2.adapter
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -9,12 +8,9 @@ import com.vkunitsyn.level2.model.ContactModel
 import com.vkunitsyn.level2.utils.addPictureGlide
 
 
-class ContactsAdapter(contacts: List<ContactModel>) :
-    RecyclerView.Adapter<ContactsAdapter.MyViewHolder>() {
+class ContactsAdapter : RecyclerView.Adapter<ContactsAdapter.MyViewHolder>() {
     private lateinit var binding: ContactModelLayoutBinding
-    private var contactsList = contacts
-
-    class MyViewHolder(binding: ContactModelLayoutBinding) : RecyclerView.ViewHolder(binding.root)
+    private var contactsList: List<ContactModel> = ArrayList()
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -26,20 +22,28 @@ class ContactsAdapter(contacts: List<ContactModel>) :
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-
-        binding.apply {
-            tvModelUserName.text = contactsList[position].name
-            tvUserModelCareer.text = contactsList[position].career
-            ivModelProfilePicture.addPictureGlide(contactsList[position].picture_URL)
-        }
+        holder.bind(position)
     }
 
     override fun getItemCount(): Int = contactsList.size
 
-    @SuppressLint("NotifyDataSetChanged")
-    fun refresh(contacts: List<ContactModel>){
-        contactsList = contacts
+
+    fun refresh(contacts: List<ContactModel>) {
+        this.contactsList = contacts
         notifyDataSetChanged()
     }
+
+    inner class MyViewHolder(binding: ContactModelLayoutBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(position: Int) {
+            binding.apply {
+                tvModelUserName.text = contactsList[position].name
+                tvUserModelCareer.text = contactsList[position].career
+                ivModelProfilePicture.addPictureGlide(contactsList[position].picture_URL)
+            }
+        }
+
+    }
+
 
 }
