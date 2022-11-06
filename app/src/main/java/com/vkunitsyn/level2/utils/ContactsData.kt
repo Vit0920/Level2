@@ -4,7 +4,7 @@ import com.vkunitsyn.level2.model.ContactModel
 
 object ContactsData {
 
-   fun getData() = listOf<ContactModel>(
+   fun getData() = arrayListOf<ContactModel>(
        ContactModel(
            "https://avatarko.ru/img/kartinka/2/zhivotnye_kot_sobaka_prikol_1764.jpg",
            "Vasya", "Doctor"
@@ -40,7 +40,7 @@ object ContactsData {
 
    )
 
-    fun getAnotherData() = listOf<ContactModel>(
+    fun getAnotherData() = arrayListOf<ContactModel>(
         ContactModel(
             "https://avatarko.ru/img/kartinka/2/zhivotnye_kot_sobaka_prikol_1764.jpg",
             "Vasya", "Doctor"

@@ -10,7 +10,7 @@ import com.vkunitsyn.level2.utils.addPictureGlide
 
 class ContactsAdapter : RecyclerView.Adapter<ContactsAdapter.MyViewHolder>() {
     private lateinit var binding: ContactModelLayoutBinding
-    private var contactsList: List<ContactModel> = ArrayList()
+    var contactsList: ArrayList<ContactModel> = ArrayList()
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -28,7 +28,7 @@ class ContactsAdapter : RecyclerView.Adapter<ContactsAdapter.MyViewHolder>() {
     override fun getItemCount(): Int = contactsList.size
 
 
-    fun refresh(contacts: List<ContactModel>) {
+    fun refresh(contacts: ArrayList<ContactModel>){
         this.contactsList = contacts
         notifyDataSetChanged()
     }
@@ -40,6 +40,10 @@ class ContactsAdapter : RecyclerView.Adapter<ContactsAdapter.MyViewHolder>() {
                 tvModelUserName.text = contactsList[position].name
                 tvUserModelCareer.text = contactsList[position].career
                 ivModelProfilePicture.addPictureGlide(contactsList[position].picture_URL)
+                btnDelete.setOnClickListener(){
+                    contactsList.removeAt(adapterPosition)
+                    notifyItemRemoved(adapterPosition)
+                }
             }
         }
 

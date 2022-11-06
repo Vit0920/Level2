@@ -8,8 +8,8 @@ import com.vkunitsyn.level2.model.ContactModel
 
 class ContactsViewModel : ViewModel() {
 
-    val contactsList: MutableLiveData<List<ContactModel>> by lazy {
-        MutableLiveData<List<ContactModel>>()
+    val contactsList: MutableLiveData<ArrayList<ContactModel>> by lazy {
+        MutableLiveData<ArrayList<ContactModel>>()
     }
 
     init {
