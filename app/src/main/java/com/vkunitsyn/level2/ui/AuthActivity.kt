@@ -106,7 +106,6 @@ class AuthActivity : AppCompatActivity() {
                     }
                 }
             }
-
             override fun afterTextChanged(p0: Editable?) {
             }
         })

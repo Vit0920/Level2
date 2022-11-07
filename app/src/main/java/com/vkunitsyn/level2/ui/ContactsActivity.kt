@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.vkunitsyn.level2.adapter.ContactsAdapter
 import com.vkunitsyn.level2.databinding.ActivityContactsBinding
+import com.vkunitsyn.level2.utils.ContactsData
 import com.vkunitsyn.level2.utils.ContactsViewModel
 
 class ContactsActivity : AppCompatActivity() {
@@ -21,7 +22,7 @@ class ContactsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityContactsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        viewModel.contactsList.observe(this, { it?.let { it -> adapter.refresh(it) } })
+        viewModel.contactsList.observe(this) { it?.let { it -> adapter.refresh(it) } }
         initAdapter()
         processBackArrowClick()
         processAddContactClick()
@@ -30,19 +31,17 @@ class ContactsActivity : AppCompatActivity() {
 
     private fun enableSwipeToDelete() {
         ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
-        override fun onMove(v: RecyclerView, h: RecyclerView.ViewHolder, t: RecyclerView.ViewHolder) = false
-        override fun onSwiped(h: RecyclerView.ViewHolder, dir: Int) {
-            val deletedContact = adapter.contactsList[h.adapterPosition]
-            val position = h.adapterPosition
-            adapter.removeAt(h.adapterPosition)
-            Snackbar.make(binding.rvContacts, "Deleted " + deletedContact.name, Snackbar.LENGTH_LONG)
-                .setAction("Undo") {
-                    adapter.contactsList.add(position, deletedContact)
-                    adapter.notifyItemInserted(position)
-                }.show()
-        }
-    }).attachToRecyclerView(binding.rvContacts)
+            override fun onMove(
+                v: RecyclerView,
+                h: RecyclerView.ViewHolder,
+                t: RecyclerView.ViewHolder
+            ) = false
+            override fun onSwiped(h: RecyclerView.ViewHolder, dir: Int) {
+                adapter.removeAt(h.adapterPosition)
+            }
+        }).attachToRecyclerView(binding.rvContacts)
     }
+
 
     private fun processAddContactClick() {
         binding.tvAddContact.setOnClickListener {
