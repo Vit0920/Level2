@@ -37,4 +37,6 @@
     <string name="email">Email</string>
     <string name="career">Career</string>
     <string name="name">Name</string>
+    <string name="undo">Undo</string>
+    <string name="has_been_removed">" has been removed"</string>
 </resources>

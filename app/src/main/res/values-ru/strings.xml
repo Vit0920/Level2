@@ -36,4 +36,6 @@
     <string name="email">Эл. почта</string>
     <string name="career">Карьера</string>
     <string name="name">Имя</string>
+    <string name="undo">Отмена</string>
+    <string name="has_been_removed">" был(а) удален(а)"</string>
 </resources>
