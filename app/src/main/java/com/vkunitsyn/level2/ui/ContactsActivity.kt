@@ -2,9 +2,12 @@ package com.vkunitsyn.level2.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
 import com.vkunitsyn.level2.adapter.ContactsAdapter
 import com.vkunitsyn.level2.databinding.ActivityContactsBinding
 import com.vkunitsyn.level2.utils.ContactsViewModel
@@ -12,7 +15,6 @@ import com.vkunitsyn.level2.utils.ContactsViewModel
 class ContactsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityContactsBinding
     private lateinit var adapter: ContactsAdapter
-    private lateinit var recyclerView: RecyclerView
     private val viewModel: ContactsViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,7 +26,32 @@ class ContactsActivity : AppCompatActivity() {
         processBackArrowClick()
         processSearchClick()
         processAddContactClick()
+        enableSwipeToDelete()
 
+
+    }
+
+    private fun enableSwipeToDelete() {
+        ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+        override fun onMove(v: RecyclerView, h: RecyclerView.ViewHolder, t: RecyclerView.ViewHolder) = false
+        override fun onSwiped(h: RecyclerView.ViewHolder, dir: Int) {
+            val deletedContact = adapter.contactsList.get(h.adapterPosition)
+            val position = h.adapterPosition
+            adapter.removeAt(h.adapterPosition)
+            Snackbar.make(binding.rvContacts, "Deleted " + deletedContact.name, Snackbar.LENGTH_LONG)
+                .setAction(
+                    "Undo",
+                    View.OnClickListener {
+                        // adding on click listener to our action of snack bar.
+                        // below line is to add our item to array list with a position.
+                        adapter.contactsList.add(position, deletedContact)
+
+                        // below line is to notify item is
+                        // added to our adapter class.
+                        adapter.notifyItemInserted(position)
+                    }).show()
+        }
+    }).attachToRecyclerView(binding.rvContacts)
     }
 
     private fun processAddContactClick() {
@@ -48,9 +75,8 @@ class ContactsActivity : AppCompatActivity() {
     }
 
     private fun initAdapter() {
-        recyclerView = binding.rvContacts
         adapter = ContactsAdapter()
-        recyclerView.adapter = adapter
+        binding.rvContacts.adapter = adapter
     }
 
 }

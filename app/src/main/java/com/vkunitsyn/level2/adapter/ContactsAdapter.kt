@@ -33,6 +33,11 @@ class ContactsAdapter : RecyclerView.Adapter<ContactsAdapter.MyViewHolder>() {
         notifyDataSetChanged()
     }
 
+    fun removeAt(position: Int) {
+        contactsList.removeAt(position)   // items is a MutableList
+        notifyItemRemoved(position)
+    }
+
     inner class MyViewHolder(binding: ContactModelLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(position: Int) {
@@ -40,10 +45,7 @@ class ContactsAdapter : RecyclerView.Adapter<ContactsAdapter.MyViewHolder>() {
                 tvModelUserName.text = contactsList[position].name
                 tvUserModelCareer.text = contactsList[position].career
                 ivModelProfilePicture.addPictureGlide(contactsList[position].picture_URL)
-                btnDelete.setOnClickListener(){
-                    contactsList.removeAt(adapterPosition)
-                    notifyItemRemoved(adapterPosition)
-                }
+                btnDelete.setOnClickListener { removeAt(position) }
             }
         }
 
