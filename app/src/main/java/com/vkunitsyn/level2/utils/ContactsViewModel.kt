@@ -18,7 +18,4 @@ class ContactsViewModel : ViewModel() {
 
    fun getData()  = contactsList.value
 
-    fun changeData() {
-        contactsList.value = ContactsData.getAnotherData()
-    }
 }

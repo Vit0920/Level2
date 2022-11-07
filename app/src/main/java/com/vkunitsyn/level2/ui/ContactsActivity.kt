@@ -24,32 +24,22 @@ class ContactsActivity : AppCompatActivity() {
         viewModel.contactsList.observe(this, { it?.let { it -> adapter.refresh(it) } })
         initAdapter()
         processBackArrowClick()
-        processSearchClick()
         processAddContactClick()
         enableSwipeToDelete()
-
-
     }
 
     private fun enableSwipeToDelete() {
         ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
         override fun onMove(v: RecyclerView, h: RecyclerView.ViewHolder, t: RecyclerView.ViewHolder) = false
         override fun onSwiped(h: RecyclerView.ViewHolder, dir: Int) {
-            val deletedContact = adapter.contactsList.get(h.adapterPosition)
+            val deletedContact = adapter.contactsList[h.adapterPosition]
             val position = h.adapterPosition
             adapter.removeAt(h.adapterPosition)
             Snackbar.make(binding.rvContacts, "Deleted " + deletedContact.name, Snackbar.LENGTH_LONG)
-                .setAction(
-                    "Undo",
-                    View.OnClickListener {
-                        // adding on click listener to our action of snack bar.
-                        // below line is to add our item to array list with a position.
-                        adapter.contactsList.add(position, deletedContact)
-
-                        // below line is to notify item is
-                        // added to our adapter class.
-                        adapter.notifyItemInserted(position)
-                    }).show()
+                .setAction("Undo") {
+                    adapter.contactsList.add(position, deletedContact)
+                    adapter.notifyItemInserted(position)
+                }.show()
         }
     }).attachToRecyclerView(binding.rvContacts)
     }
@@ -67,12 +57,6 @@ class ContactsActivity : AppCompatActivity() {
         }
     }
 
-    private fun processSearchClick() {
-        binding.ibSearch.setOnClickListener {
-            viewModel.changeData()
-            viewModel.getData()?.let { it1 -> adapter.refresh(it1) }
-        }
-    }
 
     private fun initAdapter() {
         adapter = ContactsAdapter()
