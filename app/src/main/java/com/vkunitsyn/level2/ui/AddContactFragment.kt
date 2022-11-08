@@ -27,6 +27,11 @@ class AddContactFragment : DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         processSaveButtonClick()
+        processBackArrowClick()
+    }
+
+    private fun processBackArrowClick() {
+        binding.ibArrowBackAddContact.setOnClickListener { dismiss() }
     }
 
     private fun processSaveButtonClick() {
