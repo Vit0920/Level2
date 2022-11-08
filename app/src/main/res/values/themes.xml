@@ -14,13 +14,9 @@
         <!-- Customize your theme here. -->
 
     </style>
-
-    <style name="Theme.Level2.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
+    <style name="DialogTheme" parent="Theme.Level2">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowIsFloating">false</item>
     </style>
-
-    <style name="Theme.Level2.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
-    <style name="Theme.Level2.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

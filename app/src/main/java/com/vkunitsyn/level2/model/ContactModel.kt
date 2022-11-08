@@ -1,13 +1,13 @@
 package com.vkunitsyn.level2.model
 
-class ContactModel (
-    val picture_URL: String,
-    val name: String,
-    val career: String,
-//    val phone: String,
-//    val address: String,
-//    val birthday: String
+class ContactModel(
+    var picture_URL: String = "",
+    var name: String = "",
+    var career: String = "",
+    var phone: String = "",
+    var address: String = "",
+    var birthday: String = ""
 
-    )
+)
 
 

@@ -7,35 +7,35 @@ object ContactsData {
    fun getData() = arrayListOf<ContactModel>(
        ContactModel(
            "https://avatarko.ru/img/kartinka/2/zhivotnye_kot_sobaka_prikol_1764.jpg",
-           "Vasya", "Doctor"
+           "Vasya", "Doctor","","",""
        ),
        ContactModel(
            "https://avatarko.ru/img/kartinka/33/kapyushon_robot_34631.jpg",
-           "Petya", "Teacher"
+           "Petya", "Teacher","","",""
        ),
        ContactModel(
            "https://avatarko.ru/img/kartinka/11/multfilm_robot_10393.jpg",
-           "Anna", "Designer"
+           "Anna", "Designer","","",""
        ),
        ContactModel(
            "https://avatarko.ru/img/kartinka/18/devushka_robot_17109.jpg",
-           "Lisa", "Cook"
+           "Lisa", "Cook","","",""
        ),
        ContactModel(
            "https://avatarko.ru/img/kartinka/33/kapyushon_robot_34631.jpg",
-           "Petya", "Teacher"
+           "Petya", "Teacher","","",""
        ),
        ContactModel(
            "https://avatarko.ru/img/kartinka/11/multfilm_robot_10393.jpg",
-           "Anna", "Designer"
+           "Anna", "Designer","","",""
        ),
        ContactModel(
            "https://avatarko.ru/img/kartinka/33/kapyushon_robot_34631.jpg",
-           "Petya", "Teacher"
+           "Petya", "Teacher","","",""
        ),
        ContactModel(
            "https://avatarko.ru/img/kartinka/11/multfilm_robot_10393.jpg",
-           "Anna", "Designer"
+           "Anna", "Designer","","",""
        )
 
    )
