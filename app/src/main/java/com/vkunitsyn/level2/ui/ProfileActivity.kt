@@ -23,7 +23,6 @@ class ProfileActivity : AppCompatActivity() {
 
         //Displays user name
         binding.tvName.text = intent.extras?.getString(Constants.USER_NAME)
-
         processViewContactsButtonClick()
     }
 

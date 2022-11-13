@@ -7,6 +7,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import androidx.appcompat.app.AppCompatActivity
 import com.vkunitsyn.level2.R
+import com.vkunitsyn.level2.databinding.ActivityAddContactBinding
 import com.vkunitsyn.level2.databinding.ActivityAuthBinding
 import com.vkunitsyn.level2.utils.Constants
 import com.vkunitsyn.level2.utils.Parser

@@ -10,3 +10,11 @@ fun ImageView.addPictureGlide(url: String) {
         .override(200, 200)
         .into(this)
 }
+
+fun ImageView.addPictureGlide(drawable: Int) {
+    Glide.with(this)
+        .load(drawable)
+        .circleCrop()
+        .override(200, 200)
+        .into(this)
+}

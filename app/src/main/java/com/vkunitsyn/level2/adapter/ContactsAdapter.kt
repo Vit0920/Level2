@@ -76,6 +76,4 @@ class ContactsAdapter : RecyclerView.Adapter<ContactsAdapter.MyViewHolder>() {
                 add(position, contact)
             }.show()
     }
-
-
 }

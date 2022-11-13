@@ -14,8 +14,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_weight="2">
+        app:layout_constraintTop_toTopOf="parent">
 
     </View>
 
@@ -185,7 +184,30 @@
     </ScrollView>
 
 
+    <ImageView
+        android:id="@+id/iv_newContactPicture"
+        android:layout_width="113dp"
+        android:layout_height="113dp"
+        android:layout_marginTop="@dimen/margin_large"
+        android:layout_marginBottom="@dimen/margin_large"
+        app:layout_constraintBottom_toBottomOf="@+id/v_add_contact_header_bg"
+        app:layout_constraintEnd_toEndOf="@+id/v_add_contact_header_bg"
+        app:layout_constraintStart_toStartOf="@+id/v_add_contact_header_bg"
+        app:layout_constraintTop_toBottomOf="@+id/tv_add_contact_addContact"
+        app:srcCompat="@drawable/profile_image" />
 
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/ib_addPicture"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:background="@drawable/camera"
+        android:layout_marginStart="@dimen/margin_large"
+        app:circularflow_defaultRadius="20dp"
+        app:layout_constraintCircleRadius="20dp"
+        android:layout_marginTop="@dimen/margin_large"
+        app:layout_constraintStart_toEndOf="@+id/iv_newContactPicture"
+        app:layout_constraintTop_toBottomOf="@+id/tv_add_contact_addContact" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
