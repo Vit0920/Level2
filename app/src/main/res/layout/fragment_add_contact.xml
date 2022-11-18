@@ -75,7 +75,7 @@
                     android:backgroundTint="@android:color/transparent"
                     android:inputType="textPersonName"
                     android:singleLine="true"
-                    android:textColor="?attr/colorOnPrimary"
+                    android:textColor="?attr/colorSecondaryVariant"
                     android:textSize="@dimen/text_large" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -93,7 +93,7 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="@android:color/transparent"
                     android:singleLine="true"
-                    android:textColor="?attr/colorOnPrimary"
+                    android:textColor="?attr/colorSecondaryVariant"
                     android:textSize="@dimen/text_large" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -111,7 +111,7 @@
                     android:backgroundTint="@android:color/transparent"
                     android:inputType="textPersonName"
                     android:singleLine="true"
-                    android:textColor="?attr/colorOnPrimary"
+                    android:textColor="?attr/colorSecondaryVariant"
                     android:textSize="@dimen/text_large" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -129,7 +129,7 @@
                     android:backgroundTint="@android:color/transparent"
                     android:inputType="textPersonName"
                     android:singleLine="true"
-                    android:textColor="?attr/colorOnPrimary"
+                    android:textColor="?attr/colorSecondaryVariant"
                     android:textSize="@dimen/text_large" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -147,7 +147,7 @@
                     android:backgroundTint="@android:color/transparent"
                     android:inputType="textPersonName"
                     android:singleLine="true"
-                    android:textColor="?attr/colorOnPrimary"
+                    android:textColor="?attr/colorSecondaryVariant"
                     android:textSize="@dimen/text_large" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -166,7 +166,7 @@
                     android:backgroundTint="@android:color/transparent"
                     android:inputType="textPersonName"
                     android:singleLine="true"
-                    android:textColor="?attr/colorOnPrimary"
+                    android:textColor="?attr/colorSecondaryVariant"
                     android:textSize="@dimen/text_large" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -186,15 +186,15 @@
 
     <ImageView
         android:id="@+id/iv_newContactPicture"
-        android:layout_width="113dp"
-        android:layout_height="113dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="1:1"
         android:layout_marginTop="@dimen/margin_large"
         android:layout_marginBottom="@dimen/margin_large"
         app:layout_constraintBottom_toBottomOf="@+id/v_add_contact_header_bg"
         app:layout_constraintEnd_toEndOf="@+id/v_add_contact_header_bg"
         app:layout_constraintStart_toStartOf="@+id/v_add_contact_header_bg"
-        app:layout_constraintTop_toBottomOf="@+id/tv_add_contact_addContact"
-        app:srcCompat="@drawable/profile_image" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_add_contact_addContact"/>
 
 
     <androidx.appcompat.widget.AppCompatImageButton

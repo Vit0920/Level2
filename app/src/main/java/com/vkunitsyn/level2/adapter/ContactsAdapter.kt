@@ -25,7 +25,11 @@ class ContactsAdapter : RecyclerView.Adapter<ContactsAdapter.MyViewHolder>() {
         fun bind(contact: ContactModel) = binding.apply {
             tvModelUserName.text = contact.name
             tvUserModelCareer.text = contact.career
-            ivModelProfilePicture.addPictureGlide(contact.picture_URL)
+            if(contact.picture.isEmpty()){
+                ivModelProfilePicture.addPictureGlide(R.drawable.default_profile_picture)
+            }else{
+            ivModelProfilePicture.addPictureGlide(contact.picture)
+            }
             btnDelete.setOnClickListener { removeAt(adapterPosition) }
         }
     }
