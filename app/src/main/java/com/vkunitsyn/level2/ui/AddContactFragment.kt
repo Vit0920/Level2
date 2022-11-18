@@ -76,7 +76,7 @@ class AddContactFragment : DialogFragment() {
         val imagePath = activity?.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
         return File.createTempFile(
             Constants.NEW_CONTACT_PROFILE_PICTURE_FILE_NAME,
-            "jpg",
+            Constants.IMAGE_FORMAT,
             imagePath
         );
     }
