@@ -1,6 +1,5 @@
 package com.vkunitsyn.level2.ui
 
-import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -9,7 +8,6 @@ import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.FileProvider.getUriForFile
@@ -25,8 +23,10 @@ import java.io.File
 class AddContactFragment : DialogFragment() {
 
     lateinit var binding: FragmentAddContactBinding
-    lateinit var getPhoto: ActivityResultLauncher<Intent>
-    var outputFileUri: Uri? = null
+    lateinit var getPhoto: ActivityResultLauncher<Uri>
+    lateinit var chooseImage: ActivityResultLauncher<String>
+    var imageFileUri: Uri? = null
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -43,32 +43,39 @@ class AddContactFragment : DialogFragment() {
         binding.ivNewContactPicture.addPictureGlide(R.drawable.default_profile_picture)
         processSaveButtonClick()
         processBackArrowClick()
+        processProfilePictureClick()
 
+        getPhoto = registerForActivityResult(ActivityResultContracts.TakePicture())
+        { result ->
+           if(result){
+               binding.ivNewContactPicture.addPictureGlide(imageFileUri!!)
+           }else{
+               imageFileUri = null
+           }
+        }
 
-        getPhoto = registerForActivityResult(ActivityResultContracts.StartActivityForResult())
-        { result: ActivityResult ->
-            if (result.resultCode == Activity.RESULT_OK) {
-                binding.ivNewContactPicture.addPictureGlide(outputFileUri)
-            } else {
-                outputFileUri = null
-            }
+        chooseImage = registerForActivityResult(ActivityResultContracts.GetContent())
+        { result ->
+                binding.ivNewContactPicture.addPictureGlide(result!!)
+                imageFileUri = result
         }
         processAddPictureClick()
+    }
+
+    private fun processProfilePictureClick() {
+        binding.ivNewContactPicture.setOnClickListener {
+            val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+            chooseImage.launch("image/*")
+        }
     }
 
 
     private fun processAddPictureClick() {
 
         binding.ibAddPicture.setOnClickListener {
-            val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
             val image = createImageFile()
-
-            outputFileUri = getUriForFile(
-                requireContext(),
-                Constants.AUTHORITIES, image
-            )
-            intent.putExtra(MediaStore.EXTRA_OUTPUT, outputFileUri)
-            getPhoto.launch(intent)
+            imageFileUri = getUriForFile(requireContext(), Constants.AUTHORITIES, image)
+            getPhoto.launch(imageFileUri)
         }
     }
 
@@ -97,8 +104,8 @@ class AddContactFragment : DialogFragment() {
     private fun createNewContact(): ContactModel {
         val newContact = ContactModel()
         with(newContact) {
-            if (outputFileUri != null) {
-                picture = outputFileUri.toString()
+            if (imageFileUri != null) {
+                picture = imageFileUri.toString()
             }
             name = binding.tietUserNameAddContact.text.toString()
             career = binding.tietCareerAddContact.text.toString()

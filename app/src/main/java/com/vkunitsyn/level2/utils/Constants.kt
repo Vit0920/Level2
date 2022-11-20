@@ -12,4 +12,6 @@ object Constants {
     const val NEW_CONTACT_PROFILE_PICTURE_FILE_NAME = "new_contact"
     const val IMAGE_FORMAT = "jpg"
     const val AUTHORITIES = "com.vkunitsyn.level2.fileprovider"
+    const val TAKE_PICTURE = 1
+    const val CHOOSE_IMAGE_FROM_GALERY = 2
 }
