@@ -122,7 +122,7 @@
         android:layout_marginBottom="@dimen/margin_small"
         app:text="@string/bt_google"
         app:logoSize="25dp"
-        app:textSize="@dimen/text_extra_large"
+        app:textSize="@dimen/text_large"
         app:textColor="?attr/colorOnSecondary"
         app:backgroundTint="?attr/colorOnPrimary"
         app:layout_constraintStart_toStartOf="parent"
