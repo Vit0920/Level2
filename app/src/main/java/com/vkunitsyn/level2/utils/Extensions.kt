@@ -1,6 +1,6 @@
 package com.vkunitsyn.level2.utils
 
-import android.graphics.drawable.Drawable
+import android.content.Context
 import android.net.Uri
 import android.widget.ImageView
 import com.bumptech.glide.Glide
@@ -27,4 +27,9 @@ fun ImageView.addPictureGlide(uri: Uri) {
         .circleCrop()
         .override(400, 400)
         .into(this)
+}
+
+
+fun Context.dpToPx(dp: Float):Float{
+    return dp * this.resources.displayMetrics.density
 }

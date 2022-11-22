@@ -131,7 +131,8 @@
         app:layout_constraintStart_toEndOf="@+id/cb_remember_me"
         app:layout_constraintTop_toBottomOf="@+id/tilo_password" />
 
-    <com.google.android.material.button.MaterialButton
+
+    <com.vkunitsyn.level2.ui.GoogleCustomButton
         android:id="@+id/mb_google_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -141,9 +142,6 @@
         android:text="@string/bt_google"
         android:textColor="?attr/colorOnSecondary"
         android:textSize="@dimen/text_large"
-        app:icon="@drawable/google_logo"
-        app:iconGravity="textStart"
-        app:iconTintMode="multiply"
         app:layout_constraintBottom_toTopOf="@+id/tv_terms_and_conditions"
         app:layout_constraintEnd_toStartOf="@+id/tv_or"
         app:layout_constraintHorizontal_chainStyle="packed"
@@ -157,7 +155,7 @@
         android:layout_marginEnd="@dimen/margin_normal"
         android:text="@string/or"
         android:textColor="?attr/colorOnPrimary"
-        app:layout_constraintBaseline_toBaselineOf="@id/mb_google_button"
+        app:layout_constraintBaseline_toBaselineOf="@id/mb_register"
         app:layout_constraintBottom_toTopOf="@+id/tv_terms_and_conditions"
         app:layout_constraintEnd_toStartOf="@+id/mb_register"
         app:layout_constraintHorizontal_chainStyle="packed"
@@ -168,14 +166,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/margin_normal"
-        android:layout_marginBottom="@dimen/margin_normal"
+        android:layout_marginBottom="9dp"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
         android:backgroundTint="?attr/colorPrimaryVariant"
         android:text="@string/register"
         android:textColor="?attr/colorOnPrimary"
         android:textSize="@dimen/text_large"
         app:layout_constraintBottom_toTopOf="@+id/tv_terms_and_conditions"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toEndOf="@+id/tv_or"
         app:strokeColor="?attr/colorPrimary"
         app:strokeWidth="@dimen/stroke_width_normal" />

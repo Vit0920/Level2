@@ -114,20 +114,20 @@
         app:layout_constraintStart_toEndOf="@+id/cb_remember_me"
         app:layout_constraintTop_toBottomOf="@+id/tilo_password" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/mb_google_button"
+
+    <com.vkunitsyn.level2.ui.GoogleCustomButton
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/margin_normal"
         android:layout_marginBottom="@dimen/margin_small"
-        android:backgroundTint="?attr/colorOnPrimary"
-        android:text="@string/bt_google"
-        android:textColor="?attr/colorOnSecondary"
-        android:textSize="@dimen/text_large"
-        app:icon="@drawable/google_logo"
-        app:iconGravity="textStart"
-        app:iconTintMode="multiply"
-        app:layout_constraintBottom_toTopOf="@id/tv_or" />
+        app:text="@string/bt_google"
+        app:logoSize="25dp"
+        app:textSize="@dimen/text_extra_large"
+        app:textColor="?attr/colorOnSecondary"
+        app:backgroundTint="?attr/colorOnPrimary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tv_or"/>
 
     <TextView
         android:id="@+id/tv_or"

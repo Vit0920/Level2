@@ -1,5 +1,8 @@
 package com.vkunitsyn.level2.utils
 
+import androidx.core.content.res.ResourcesCompat
+import com.vkunitsyn.level2.R
+
 object Constants {
     const val PASS = "password"
     const val EMAIL = "email"
@@ -12,6 +15,13 @@ object Constants {
     const val NEW_CONTACT_PROFILE_PICTURE_FILE_NAME = "new_contact"
     const val IMAGE_FORMAT = "jpg"
     const val AUTHORITIES = "com.vkunitsyn.level2.fileprovider"
-    const val TAKE_PICTURE = 1
-    const val CHOOSE_IMAGE_FROM_GALERY = 2
+
+
+    const val PADDING_X = 15F
+    const val PADDING_Y = 10F
+    const val DEFAULT_TEXT = "GOOGLE"
+    const val DEFAULT_TEXT_SIZE = 50
+    const val DEFAULT_GOOGLE_LOGO_SIZE = 20F
+    const val BUTTON_CORNER_RADIUS = 10F
+    const val LOGO_TEXT_MARGIN = 8F
 }

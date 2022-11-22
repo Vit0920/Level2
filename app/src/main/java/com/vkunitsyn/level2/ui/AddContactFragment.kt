@@ -47,17 +47,17 @@ class AddContactFragment : DialogFragment() {
 
         getPhoto = registerForActivityResult(ActivityResultContracts.TakePicture())
         { result ->
-           if(result){
-               binding.ivNewContactPicture.addPictureGlide(imageFileUri!!)
-           }else{
-               imageFileUri = null
-           }
+            if (result) {
+                binding.ivNewContactPicture.addPictureGlide(imageFileUri!!)
+            } else {
+                imageFileUri = null
+            }
         }
 
         chooseImage = registerForActivityResult(ActivityResultContracts.GetContent())
         { result ->
-                binding.ivNewContactPicture.addPictureGlide(result!!)
-                imageFileUri = result
+            binding.ivNewContactPicture.addPictureGlide(result!!)
+            imageFileUri = result
         }
         processAddPictureClick()
     }

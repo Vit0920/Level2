@@ -20,7 +20,7 @@ class ContactsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityContactsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        viewModel.contactsList.observe(this) { adapter.refresh(it)}
+        viewModel.contactsList.observe(this) { adapter.refresh(it) }
         initAdapter()
         processBackArrowClick()
         processAddContactClick()
@@ -35,6 +35,7 @@ class ContactsActivity : AppCompatActivity() {
                 h: RecyclerView.ViewHolder,
                 t: RecyclerView.ViewHolder
             ) = false
+
             override fun onSwiped(h: RecyclerView.ViewHolder, dir: Int) {
                 adapter.removeAt(h.adapterPosition)
             }
@@ -42,7 +43,7 @@ class ContactsActivity : AppCompatActivity() {
     }
 
 
-     fun processAddContactClick() {
+    fun processAddContactClick() {
         binding.tvAddContact.setOnClickListener {
             AddContactFragment().show(supportFragmentManager, getString(R.string.tv_add_contact))
         }

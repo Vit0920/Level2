@@ -25,15 +25,14 @@ class ContactsAdapter : RecyclerView.Adapter<ContactsAdapter.MyViewHolder>() {
         fun bind(contact: ContactModel) = binding.apply {
             tvModelUserName.text = contact.name
             tvUserModelCareer.text = contact.career
-            if(contact.picture.isEmpty()){
+            if (contact.picture.isEmpty()) {
                 ivModelProfilePicture.addPictureGlide(R.drawable.default_profile_picture)
-            }else{
-            ivModelProfilePicture.addPictureGlide(contact.picture)
+            } else {
+                ivModelProfilePicture.addPictureGlide(contact.picture)
             }
             btnDelete.setOnClickListener { removeAt(adapterPosition) }
         }
     }
-
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         super.onAttachedToRecyclerView(recyclerView)
@@ -75,9 +74,8 @@ class ContactsAdapter : RecyclerView.Adapter<ContactsAdapter.MyViewHolder>() {
             myRecyclerView,
             contact.name + context.getString(R.string.has_been_removed),
             Snackbar.LENGTH_LONG
-        )
-            .setAction(context.getString(R.string.undo)) {
-                add(position, contact)
-            }.show()
+        ).setAction(context.getString(R.string.undo)) {
+            add(position, contact)
+        }.show()
     }
 }
