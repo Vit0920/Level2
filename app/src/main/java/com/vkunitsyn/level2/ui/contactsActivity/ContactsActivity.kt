@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.vkunitsyn.level2.R
 import com.vkunitsyn.level2.adapter.ContactsAdapter
 import com.vkunitsyn.level2.databinding.ActivityContactsBinding
-import com.vkunitsyn.level2.model.Contact
 import com.vkunitsyn.level2.ui.AddContactFragment
 
 class ContactsActivity : AppCompatActivity() {
@@ -21,7 +20,7 @@ class ContactsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityContactsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        viewModel.contactsList.observe(this) { adapter.refresh(it as ArrayList<Contact>)}
+        viewModel.contactsList.observe(this) { adapter.refresh(it) }
         initAdapter()
         processBackArrowClick()
         processAddContactClick()
