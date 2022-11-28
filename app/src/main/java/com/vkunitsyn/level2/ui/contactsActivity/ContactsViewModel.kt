@@ -8,6 +8,7 @@ import com.vkunitsyn.level2.utils.ContactsData
 class ContactsViewModel : ViewModel() {
 
 
+
     val contactsList: MutableLiveData<ArrayList<Contact>> by lazy {
         MutableLiveData<ArrayList<Contact>>()
     }
@@ -16,4 +17,21 @@ class ContactsViewModel : ViewModel() {
         contactsList.value = ContactsData.getData()
     }
 
-}
+    fun add(position: Int, contact: Contact ){
+        contactsList.value?.add(position,contact)
+    }
+
+    fun remove (contact: Contact){
+        contactsList.value?.remove(contact)
+    }
+
+    fun removeAt(position: Int){
+        contactsList.value?.removeAt(position)
+    }
+
+    fun get (position: Int): Contact? = contactsList.value?.get(position)
+
+
+    fun getSize(): Int? = contactsList.value?.size
+    }
+

@@ -5,9 +5,11 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
 import com.vkunitsyn.level2.R
 import com.vkunitsyn.level2.adapter.ContactsAdapter
 import com.vkunitsyn.level2.databinding.ActivityContactsBinding
+import com.vkunitsyn.level2.model.Contact
 import com.vkunitsyn.level2.ui.AddContactFragment
 
 class ContactsActivity : AppCompatActivity() {
@@ -22,6 +24,7 @@ class ContactsActivity : AppCompatActivity() {
         setContentView(binding.root)
         viewModel.contactsList.observe(this) { adapter.refresh(it) }
         initAdapter()
+        adapter.onTrashBinClick = { position -> deleteContact(position) }
         processBackArrowClick()
         processAddContactClick()
         enableSwipeToDelete()
@@ -37,7 +40,7 @@ class ContactsActivity : AppCompatActivity() {
             ) = false
 
             override fun onSwiped(h: RecyclerView.ViewHolder, dir: Int) {
-                adapter.removeAt(h.adapterPosition)
+                deleteContact(h.adapterPosition)
             }
         }).attachToRecyclerView(binding.rvContacts)
     }
@@ -60,6 +63,33 @@ class ContactsActivity : AppCompatActivity() {
         adapter = ContactsAdapter()
         binding.rvContacts.adapter = adapter
     }
+
+
+    private fun deleteContact(position: Int) {
+        val contact = viewModel.get(position)
+        viewModel.removeAt(position)
+        adapter.notifyItemRemoved(position)
+        if (contact != null) {
+            showSnackbar(contact, position)
+        }
+    }
+
+    fun addContact(position: Int, contact: Contact) {
+        viewModel.add(position, contact)
+        adapter.notifyItemInserted(position)
+    }
+
+
+    private fun showSnackbar(contact: Contact, position: Int) {
+        Snackbar.make(
+            binding.rvContacts,
+            contact.name + getString(R.string.has_been_removed),
+            Snackbar.LENGTH_LONG
+        ).setAction(R.string.undo) {
+            addContact(position, contact)
+        }.show()
+    }
+
 
 }
 

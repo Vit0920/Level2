@@ -94,7 +94,7 @@ class AddContactFragment : DialogFragment() {
 
         binding.mbSaveAddContact.setOnClickListener {
             val position = (activity as ContactsActivity).adapter.itemCount
-            (activity as ContactsActivity).adapter.add(position, createNewContact())
+            (activity as ContactsActivity).addContact(position, createNewContact())
             dismiss()
         }
     }

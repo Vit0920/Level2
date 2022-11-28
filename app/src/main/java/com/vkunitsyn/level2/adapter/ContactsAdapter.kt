@@ -1,11 +1,9 @@
 package com.vkunitsyn.level2.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.snackbar.Snackbar
 import com.vkunitsyn.level2.R
 import com.vkunitsyn.level2.databinding.ContactModelLayoutBinding
 import com.vkunitsyn.level2.model.Contact
@@ -15,7 +13,8 @@ import com.vkunitsyn.level2.utils.addPictureGlide
 class ContactsAdapter : RecyclerView.Adapter<ContactsAdapter.MyViewHolder>() {
 
     private lateinit var myRecyclerView: RecyclerView
-    private lateinit var context: Context
+    var onTrashBinClick: ((Int) -> (Unit))? = null
+
     private var contactsList: ArrayList<Contact> = ArrayList()
 
 
@@ -29,7 +28,9 @@ class ContactsAdapter : RecyclerView.Adapter<ContactsAdapter.MyViewHolder>() {
             } else {
                 ivModelProfilePicture.addPictureGlide(contact.picture)
             }
-            btnDelete.setOnClickListener { removeAt(adapterPosition) }
+            btnDelete.setOnClickListener {
+                onTrashBinClick?.invoke(adapterPosition)
+            }
         }
     }
 
@@ -45,7 +46,6 @@ class ContactsAdapter : RecyclerView.Adapter<ContactsAdapter.MyViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        context = holder.itemView.context
         holder.bind(contactsList[position])
     }
 
@@ -56,25 +56,5 @@ class ContactsAdapter : RecyclerView.Adapter<ContactsAdapter.MyViewHolder>() {
         contactsList = contacts
     }
 
-    fun removeAt(position: Int) {
-        val deletedContact = contactsList[position]
-        contactsList.removeAt(position)
-        notifyItemRemoved(position)
-        showSnackbar(deletedContact, position)
-    }
 
-    fun add(position: Int, contact: Contact) {
-        contactsList.add(position, contact)
-        notifyItemInserted(position)
-    }
-
-    private fun showSnackbar(contact: Contact, position: Int) {
-        Snackbar.make(
-            myRecyclerView,
-            contact.name + context.getString(R.string.has_been_removed),
-            Snackbar.LENGTH_LONG
-        ).setAction(context.getString(R.string.undo)) {
-            add(position, contact)
-        }.show()
-    }
 }
