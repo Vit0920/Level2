@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.vkunitsyn.level2.databinding.ActivityProfileBinding
+import com.vkunitsyn.level2.ui.contactsActivity.ContactsActivity
 import com.vkunitsyn.level2.utils.Constants
 
 class ProfileActivity : AppCompatActivity() {

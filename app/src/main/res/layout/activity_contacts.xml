@@ -18,7 +18,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:background="?attr/colorPrimaryVariant"
-        app:layout_constraintHeight_percent="0.2">
+        app:layout_constraintHeight_percent="0.25">
 
     </View>
 
@@ -67,7 +67,8 @@
         android:text="@string/tv_add_contact"
         android:textColor="?attr/colorOnPrimary"
         android:textSize="@dimen/text_normal"
-        android:paddingVertical="@dimen/margin_large"
+        android:paddingVertical="@dimen/margin_small"
+        android:layout_marginBottom="@dimen/margin_small"
         android:paddingHorizontal="@dimen/margin_normal"
         app:layout_constraintBottom_toBottomOf="@+id/v_contacts_header_bg"
         app:layout_constraintStart_toStartOf="parent">

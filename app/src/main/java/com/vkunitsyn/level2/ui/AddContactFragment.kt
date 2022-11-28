@@ -1,10 +1,8 @@
 package com.vkunitsyn.level2.ui
 
-import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
-import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,7 +12,8 @@ import androidx.core.content.FileProvider.getUriForFile
 import androidx.fragment.app.DialogFragment
 import com.vkunitsyn.level2.R
 import com.vkunitsyn.level2.databinding.FragmentAddContactBinding
-import com.vkunitsyn.level2.model.ContactModel
+import com.vkunitsyn.level2.model.Contact
+import com.vkunitsyn.level2.ui.contactsActivity.ContactsActivity
 import com.vkunitsyn.level2.utils.Constants
 import com.vkunitsyn.level2.utils.addPictureGlide
 import java.io.File
@@ -64,7 +63,6 @@ class AddContactFragment : DialogFragment() {
 
     private fun processProfilePictureClick() {
         binding.ivNewContactPicture.setOnClickListener {
-            val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
             chooseImage.launch("image/*")
         }
     }
@@ -85,7 +83,7 @@ class AddContactFragment : DialogFragment() {
             Constants.NEW_CONTACT_PROFILE_PICTURE_FILE_NAME,
             Constants.IMAGE_FORMAT,
             imagePath
-        );
+        )
     }
 
     private fun processBackArrowClick() {
@@ -101,17 +99,19 @@ class AddContactFragment : DialogFragment() {
         }
     }
 
-    private fun createNewContact(): ContactModel {
-        val newContact = ContactModel()
+    private fun createNewContact(): Contact {
+        val newContact = Contact()
         with(newContact) {
             if (imageFileUri != null) {
                 picture = imageFileUri.toString()
             }
-            name = binding.tietUserNameAddContact.text.toString()
-            career = binding.tietCareerAddContact.text.toString()
-            phone = binding.tietPhoneAddContact.text.toString()
-            address = binding.tietAddressAddContact.text.toString()
-            birthday = binding.tietBirthdayAddContact.text.toString()
+            with(binding){
+                name = tietUserNameAddContact.text.toString()
+                career = tietCareerAddContact.text.toString()
+                phone = tietPhoneAddContact.text.toString()
+                address = tietAddressAddContact.text.toString()
+                birthday = tietBirthdayAddContact.text.toString()
+            }
         }
         return newContact
     }

@@ -1,39 +1,39 @@
 package com.vkunitsyn.level2.utils
 
-import com.vkunitsyn.level2.model.ContactModel
+import com.vkunitsyn.level2.model.Contact
 
 object ContactsData {
 
-   fun getData() = arrayListOf<ContactModel>(
-       ContactModel(
+   fun getData() = arrayListOf<Contact>(
+       Contact(
            "https://avatarko.ru/img/kartinka/2/zhivotnye_kot_sobaka_prikol_1764.jpg",
            "Vasya", "Doctor","","",""
        ),
-       ContactModel(
+       Contact(
            "https://avatarko.ru/img/kartinka/33/kapyushon_robot_34631.jpg",
            "Petya", "Teacher","","",""
        ),
-       ContactModel(
+       Contact(
            "https://avatarko.ru/img/kartinka/11/multfilm_robot_10393.jpg",
            "Anna", "Designer","","",""
        ),
-       ContactModel(
+       Contact(
            "https://avatarko.ru/img/kartinka/18/devushka_robot_17109.jpg",
            "Lisa", "Cook","","",""
        ),
-       ContactModel(
+       Contact(
            "https://avatarko.ru/img/kartinka/33/kapyushon_robot_34631.jpg",
            "Petya", "Teacher","","",""
        ),
-       ContactModel(
+       Contact(
            "https://avatarko.ru/img/kartinka/11/multfilm_robot_10393.jpg",
            "Anna", "Designer","","",""
        ),
-       ContactModel(
+       Contact(
            "https://avatarko.ru/img/kartinka/33/kapyushon_robot_34631.jpg",
            "Petya", "Teacher","","",""
        ),
-       ContactModel(
+       Contact(
            "https://avatarko.ru/img/kartinka/11/multfilm_robot_10393.jpg",
            "Anna", "Designer","","",""
        )

@@ -1,4 +1,4 @@
-package com.vkunitsyn.level2.ui
+package com.vkunitsyn.level2.ui.contactsActivity
 
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -8,7 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.vkunitsyn.level2.R
 import com.vkunitsyn.level2.adapter.ContactsAdapter
 import com.vkunitsyn.level2.databinding.ActivityContactsBinding
-import com.vkunitsyn.level2.viewmodels.ContactsViewModel
+import com.vkunitsyn.level2.model.Contact
+import com.vkunitsyn.level2.ui.AddContactFragment
 
 class ContactsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityContactsBinding
@@ -20,7 +21,7 @@ class ContactsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityContactsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        viewModel.contactsList.observe(this) { adapter.refresh(it) }
+        viewModel.contactsList.observe(this) { adapter.refresh(it as ArrayList<Contact>)}
         initAdapter()
         processBackArrowClick()
         processAddContactClick()
@@ -43,7 +44,7 @@ class ContactsActivity : AppCompatActivity() {
     }
 
 
-    fun processAddContactClick() {
+    private fun processAddContactClick() {
         binding.tvAddContact.setOnClickListener {
             AddContactFragment().show(supportFragmentManager, getString(R.string.tv_add_contact))
         }
@@ -51,7 +52,7 @@ class ContactsActivity : AppCompatActivity() {
 
     private fun processBackArrowClick() {
         binding.ibArrowBack.setOnClickListener {
-            finish()
+            onBackPressedDispatcher.onBackPressed()
         }
     }
 

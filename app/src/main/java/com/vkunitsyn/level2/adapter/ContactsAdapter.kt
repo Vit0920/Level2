@@ -8,21 +8,20 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.vkunitsyn.level2.R
 import com.vkunitsyn.level2.databinding.ContactModelLayoutBinding
-import com.vkunitsyn.level2.model.ContactModel
+import com.vkunitsyn.level2.model.Contact
 import com.vkunitsyn.level2.utils.addPictureGlide
-import com.vkunitsyn.level2.viewmodels.ContactsViewModel
 
 
 class ContactsAdapter : RecyclerView.Adapter<ContactsAdapter.MyViewHolder>() {
 
     private lateinit var myRecyclerView: RecyclerView
     private lateinit var context: Context
-    private var contactsList: ArrayList<ContactModel> = ArrayList()
+    private var contactsList: ArrayList<Contact> = ArrayList()
 
 
     inner class MyViewHolder(item: View) : RecyclerView.ViewHolder(item) {
         var binding = ContactModelLayoutBinding.bind(item)
-        fun bind(contact: ContactModel) = binding.apply {
+        fun bind(contact: Contact) = binding.apply {
             tvModelUserName.text = contact.name
             tvUserModelCareer.text = contact.career
             if (contact.picture.isEmpty()) {
@@ -53,7 +52,7 @@ class ContactsAdapter : RecyclerView.Adapter<ContactsAdapter.MyViewHolder>() {
     override fun getItemCount(): Int = contactsList.size
 
 
-    fun refresh(contacts: ArrayList<ContactModel>) {
+    fun refresh(contacts: ArrayList<Contact>) {
         contactsList = contacts
     }
 
@@ -64,12 +63,12 @@ class ContactsAdapter : RecyclerView.Adapter<ContactsAdapter.MyViewHolder>() {
         showSnackbar(deletedContact, position)
     }
 
-    fun add(position: Int, contact: ContactModel) {
+    fun add(position: Int, contact: Contact) {
         contactsList.add(position, contact)
         notifyItemInserted(position)
     }
 
-    private fun showSnackbar(contact: ContactModel, position: Int) {
+    private fun showSnackbar(contact: Contact, position: Int) {
         Snackbar.make(
             myRecyclerView,
             contact.name + context.getString(R.string.has_been_removed),

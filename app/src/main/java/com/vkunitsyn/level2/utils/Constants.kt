@@ -1,8 +1,5 @@
 package com.vkunitsyn.level2.utils
 
-import androidx.core.content.res.ResourcesCompat
-import com.vkunitsyn.level2.R
-
 object Constants {
     const val PASS = "password"
     const val EMAIL = "email"

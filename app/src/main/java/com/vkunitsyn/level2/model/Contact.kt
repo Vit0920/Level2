@@ -1,8 +1,7 @@
 package com.vkunitsyn.level2.model
 
-import android.net.Uri
 
-class ContactModel(
+class Contact(
     var picture: String = "",
     var name: String = "",
     var career: String = "",
