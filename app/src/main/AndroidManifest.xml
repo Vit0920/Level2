@@ -21,7 +21,6 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
@@ -30,15 +29,13 @@
                 android:value="" />
         </activity>
         <activity
-            android:name="com.vkunitsyn.level2.ui.ProfileActivity"
-            android:exported="true">
+            android:name="com.vkunitsyn.level2.ui.ProfileActivity">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name="com.vkunitsyn.level2.ui.contactsActivity.ContactsActivity"
-            android:exported="true">
+            android:name="com.vkunitsyn.level2.ui.contactsActivity.ContactsActivity">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
