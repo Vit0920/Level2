@@ -55,6 +55,4 @@ class ContactsAdapter : RecyclerView.Adapter<ContactsAdapter.MyViewHolder>() {
     fun refresh(contacts: List<Contact>) {
         contactsList = contacts
     }
-
-
 }
